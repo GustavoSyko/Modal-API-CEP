@@ -1,50 +1,46 @@
+function enviarCep() {
+    var cep1 = document.getElementById('cep1').value;
+    var cep2 = document.getElementById('cep2').value;
+}
 
 
-var cep1 = prompt('1');
-var co1Lati, co1Long
-var coordenadas1
+var co1Lati, co1Long;
+var coordenadas1;
 
-var cep2 = prompt('2');
-var co2Lati, co2Long
-var coordenadas2
+var co2Lati, co2Long;
+var coordenadas2;
 
-var resultado
+var resultado;
 
-
-// Tratando os dados da API
+// Tratando os dados da BrasilAPI para o primeiro
 const api1 = `https://brasilapi.com.br/api/cep/v2/${cep1}`;
 fetch(api1)
-    .then(resposta => resposta.json())
-    .then(dados => {                                    // Pegando a Latitude e Longitude
-        co1Lati = dados.location.coordinates.latitude;
-        co1Long = dados.location.coordinates.longitude;
+    .then(resposta1 => resposta1.json())
+    .then(dados1 => {               // Pegando os dados e jogando pra uma váriavel só
+        co1Long = dados1.location.coordinates.longitude;
+        co1Lati = dados1.location.coordinates.latitude;
         coordenadas1 = `${co1Lati},${co1Long}`;
-        console.log(coordenadas1)
+
+        // Tratando os dados da BrasilAPI para o segundo
+        const api2 = `https://brasilapi.com.br/api/cep/v2/${cep2}`;
+        return fetch(api2);
     })
 
 
-// Segundo CEP
-const api2 = `https://brasilapi.com.br/api/cep/v2/${cep2}`;
-fetch(api2)
-    .then(resposta => resposta.json())
-    .then(dados => {
-        co2Lati = dados.location.coordinates.latitude;
-        co2Long = dados.location.coordinates.longitude;
+    .then(resposta2 => resposta2.json())
+    .then(dados2 => {
+        co2Long = dados2.location.coordinates.longitude;
+        co2Lati = dados2.location.coordinates.latitude;
         coordenadas2 = `${co2Lati},${co2Long}`;
-        console.log(coordenadas2)
-    })
 
-    
-// Usando site da MapQuest para calcular de parâmetro X para Y 
-
-var calculo = `https://www.mapquestapi.com/directions/v2/route?key=FMWbPYju0jXz2kHuWiEEangHsT9aqMoi&from=${coordenadas1}&to=${coordenadas2}`;
-fetch(calculo)
-    .then(resposta => resposta.json())
-    .then(dados => {
-        resultado = dados.distance;
-        console.log(dados)
-        document.write(resultado)
+        // Usando a API do MapQuest para calcular a distância
+        const calculo = `https://www.mapquestapi.com/directions/v2/route?key=FMWbPYju0jXz2kHuWiEEangHsT9aqMoi&from=${coordenadas1}&to=${coordenadas2}`;
+        return fetch(calculo);
     })
 
 
-
+    .then(resposta3 => resposta3.json())
+    .then(dados3 => {
+        resultado = dados3.route.distance;
+        document.write(resultado);    // Mostrar distância 
+    })

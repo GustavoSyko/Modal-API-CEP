@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <script src=""></script>
+    <link rel="stylesheet" href="estilos.css">
     <title>Modal CEP API</title>
 </head>
 
@@ -13,9 +14,18 @@
 
     </header>
 
-    
-    <main>
 
+    <main>
+        <div id="container">
+            <div id="caixas">
+                <label for="cep1">Cep1</label>
+                <input type="text" id="cep1" name="cep1"><br><br>
+
+                <label for="cep2">Cep2</label>
+                <input type="text" id="cep2" name="cep2">
+            </div>
+            <input type="submit" id="calcular" onclick="enviarCep()">
+        </div>
     </main>
 
 

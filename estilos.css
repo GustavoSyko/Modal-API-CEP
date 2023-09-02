@@ -4,5 +4,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family:
 }
+
+#container {
+    
+    width: 350px;
+    height: 220px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.504);
+    border-radius: 5px;
+}   
