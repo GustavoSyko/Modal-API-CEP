@@ -4,33 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src=""></script>
+    <meta name="description" content="Calculo de distância entre CEPs">
+    <meta name="author" content="Gustavo">
+
+    <script src="script.js"></script>
     <link rel="stylesheet" href="estilos.css">
     <title>Modal CEP API</title>
 </head>
 
 <body>
     <header>
-
+        <h1>Qual a distância entre os CEP's?</h1>
     </header>
 
 
     <main>
         <div id="container">
             <div id="caixas">
-                <label for="cep1">Cep1</label>
-                <input type="text" id="cep1" name="cep1"><br><br>
+                <label for="cep1">Primeiro CEP :</label>
+                <input type="text" id="cep1" name="cep1" placeholder="Ex: 89037020"><br><br>
 
-                <label for="cep2">Cep2</label>
-                <input type="text" id="cep2" name="cep2">
+                <label for="cep2">Segundo CEP :</label>
+                <input type="text" id="cep2" name="cep2" placeholder="Ex: 89002037">
             </div>
+            <p id="resultado"></p>
             <input type="submit" id="calcular" onclick="enviarCep()">
         </div>
     </main>
 
 
     <footer>
-
+        
     </footer>
 
 </body>
