@@ -1,9 +1,3 @@
-function enviarCep() {
-    var cep1 = document.getElementById('cep1').value;
-    var cep2 = document.getElementById('cep2').value;
-}
-
-
 var co1Lati, co1Long;
 var coordenadas1;
 
@@ -11,6 +5,11 @@ var co2Lati, co2Long;
 var coordenadas2;
 
 var resultado;
+
+function enviarCep() {
+    var cep1 = document.getElementById('cep1').value;
+    var cep2 = document.getElementById('cep2').value;
+
 
 // Tratando os dados da BrasilAPI para o primeiro
 const api1 = `https://brasilapi.com.br/api/cep/v2/${cep1}`;
@@ -44,3 +43,4 @@ fetch(api1)
         resultado = dados3.route.distance;
         document.write(resultado);    // Mostrar distância 
     })
+}
